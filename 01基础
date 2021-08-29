@@ -1,0 +1,281 @@
+'''基础'''
+
+price = 10
+# price = float(input("苹果的单价："))
+weight =1
+# weight = float(input("苹果的重量："))
+money = price * weight
+
+'''逻辑'''
+is_employee = False
+if not is_employee:
+    holiday_name = "生日"
+    if holiday_name == "情人节":
+        pass
+    elif holiday_name == '生日':
+        holiday_say = '生日快乐'
+    else:
+        result = '不是节假日'
+else:
+    pass
+num_while = 3
+while num_while>1:
+    num_while -=1 #
+''''函数'''
+def print_line(char, times):
+    print(char * times)
+def multiple_table(row_max):
+    row = 1
+    while row <= row_max:
+        col = 1
+        while col <= row:
+            print("%d * %d = %d" % (col, row, col * row), end="|")
+            col += 1
+        print_line('*',5)
+        row += 1
+    return 0
+multiple_table(6)
+mlt = multiple_table(9) #接受return
+'''高级数据类型'''
+name_list = ["zhangsan", "lisi", "wangwu"]
+# 1. 取值和取索引
+# list index out of range - 列表索引超出范围   print(name_list[3])
+# 知道数据的内容，想确定数据在列表中的位置
+# 使用index方法需要注意，如果传递的数据不在列表中，程序会报错！
+print(name_list.index("wangwu"))
+# 2. 修改  name_list[1] = "李四"
+# 3. 增加
+# append 方法可以向列表的末尾追加数据 name_list.append("王小二")
+# insert 方法可以在列表的指定索引位置插入数据
+name_list.insert(1, "小美眉")
+# extend 方法可以把其他列表中的完整内容，追加到当前列表的末尾
+temp_list = ["孙悟空", "猪二哥", "沙师弟"]
+name_list.extend(temp_list)
+# 4. 删除
+# remove 方法可以从列表中删除指定的数据
+name_list.remove("wangwu")
+# pop 方法默认可以把列表中最后一个元素删除
+name_list.pop()
+# pop 方法可以指定要删除元素的索引
+name_list.pop(3)
+# clear 方法可以清空列表  name_list.clear()
+name = '我要被删除'
+del name    #name变量将被删除不可用 'name' is not defined
+# len(length 长度) 函数可以统计列表中元素的总数
+list_len = len(name_list)
+# count 方法可以统计列表中某一个数据出现的次数
+count = name_list.count("小美眉")
+# 从列表中删除第一次出现的数据，如果数据不存在，程序会报错
+name_list.remove("小美眉")# print(name_list)
+# 逆序（反转）
+name_list.reverse()
+for my_name in name_list:
+    print("我的名字叫　%s" % my_name)
+#元祖与列表 使用方法一致
+# 字典是一个无序的数据集合，使用print函数输出字典时，通常
+# 输出的顺序和定义的顺序是不一致的！
+xiaoming_dict = {"name": "小明",
+            "age": 18,
+            "gender": True,
+            "height": 1.75,
+            "weight": 75.5}
+# 1. 取值
+print(xiaoming_dict["name"])
+# 2. 增加/修改
+# 如果key不存在，会新增键值对
+xiaoming_dict["age"] = 18
+# 3. 删除
+xiaoming_dict.pop("name")
+# 1. 统计键值对数量
+print(len(xiaoming_dict))
+# 2. 合并字典
+temp_dict = {"height": 10.75,
+             "age": 120}
+# 注意：如果被合并的字典中包含已经存在的键值对，会覆盖原有的键值对
+xiaoming_dict.update(temp_dict)
+# 迭代遍历字典
+# 变量k是每一次循环中，获取到的键值对的key
+for k in xiaoming_dict:
+
+    print("%s - %s" % (k, xiaoming_dict[k]))
+# 3. 清空字典
+xiaoming_dict.clear()
+#字符串、统计、遍历方法都一样index、count、
+# 1. 判断空白字符
+space_str = " \t\n\r"
+print(space_str.isspace())
+num_str = "一千零一"
+print(num_str)
+print(num_str.isdecimal())
+print(num_str.isdigit())
+print(num_str.isnumeric())
+hello_str = "hello world"
+
+# 1. 判断是否以指定字符串开始
+print(hello_str.startswith("Hello"))
+
+# 2. 判断是否以指定字符串结束
+print(hello_str.endswith("world"))
+
+# 3. 查找指定字符串
+# index同样可以查找指定的字符串在大字符串中的索引
+print(hello_str.find("llo"))
+# index如果指定的字符串不存在，会报错
+# find如果指定的字符串不存在，会返回-1
+print(hello_str.find("abc"))
+
+# 4. 替换字符串
+# replace方法执行完成之后，会返回一个新的字符串
+# 注意：不会修改原有字符串的内容
+print(hello_str.replace("world", "python"))
+
+#文本对齐
+# 假设：以下内容是从网络上抓取的
+# 要求：顺序并且居中对齐输出以下内容
+poem = ["\t\n登鹳雀楼",
+         "王之涣",
+         "白日依山尽\t\n",
+         "黄河入海流",
+         "欲穷千里目",
+         "更上一层楼"]
+
+for poem_str in poem:
+
+    # 先使用strip方法去除字符串中的空白字符
+    # 再使用center方法居中显示文本
+    print("|%s|" % poem_str.strip().center(10, "　"))
+
+students = [
+    {"name": "阿土"},
+    {"name": "小美"}
+]
+
+# 在学员列表中搜索指定的姓名
+find_name = "小美"
+for stu_dict in students:
+
+    print(stu_dict)
+
+    if stu_dict["name"] == find_name:
+
+        print("找到了　%s" % find_name)
+
+        # 如果已经找到，应该直接退出循环，而不再遍历后续的元素
+        break
+    # else:
+    #     print("抱歉没有找到　%s" % find_name)
+else:
+    # 如果希望在搜索列表时，所有的字典检查之后，都没有发现需要搜索的目标
+    # 还希望得到一个统一的提示！
+    print("抱歉没有找到　%s" % find_name)
+
+print("循环结束")
+
+'''元祖和字典的拆包'''
+def demo(*args, **kwargs):
+
+    print(args)
+    print(kwargs)
+
+
+# 元组变量/字典变量
+gl_nums = (1, 2, 3)
+gl_dict = {"name": "小明", "age": 18}
+
+# demo(gl_nums, gl_dict)
+
+# 拆包语法，简化元组变量/字典变量的传递
+demo(*gl_nums, **gl_dict)
+
+demo(1, 2, 3, name="小明", age=18)
+'''递归函数'''
+def sum_number(num):
+
+    print(num)
+    # 递归的出口，当参数满足某个条件时，不再执行函数
+    if num == 1:
+        return 
+
+    # 自己调用自己
+    sum_number(num - 1)
+
+sum_number(3)
+def sum_numbers(num):
+
+    # 1. 出口
+    if num == 1:
+        return 1
+
+    # 2. 数字的累加 num + (1...num -1)
+    # 假设 sum_numbers 能够正确的处理 1...num - 1
+    temp = sum_numbers(num - 1)
+
+    # 两个数字的相加
+    return num + temp
+
+
+result = sum_numbers(100)
+print(result)
+'''面向对象'''
+class Cat:
+    def __init__(self,new_name):
+        print("这是一个初始化方法")
+        # self.属性名 = 属性的初始值
+        self.name = new_name
+        self.age = 10
+    def __str__(self):
+        # 必须返回一个字符串，无执行动作，生成对象就启动
+        return "我是小猫[%s]" % self.name
+    def eat(self):
+        # 哪一个对象调用的方法，self就是哪一个对象的引用
+        print("%s 爱吃鱼" % self.name)
+        self.age +=1
+    def drink(self):
+        print("%s 要喝水" % self.name)
+    def __del__(self):  #当被del 对象的时候马上执行提示，如中间过程没有执行del关键字的命令，将在所有程序结尾进行自动调用本方法
+        print("%s 消失了，世上再也咩有我了" % self.name)
+# 创建猫对象
+tom = Cat('tom')
+# tom.name = 'tom'
+tom.eat()
+tom.drink()
+print(tom.age)
+addr = id(tom)
+print("%x" % addr)
+del tom
+print('********')  #测试del方法的前后区别
+class HouseItem:
+    def __init__(self, name, area):
+
+        self.name = name
+        self.area = area
+        
+    def __str__(self):
+
+        return "[%s] 占地 %.2f" % (self.name, self.area)
+class House:
+    def __init__(self, house_type, area):
+        self.house_type = house_type
+        self.area = area
+        self.free_area = area
+        self.item_list = []
+        self.__age = 145
+    def __str__(self):
+        # Python 能够自动的将一对括号内部的代码连接在一起
+        return ("户型：%s\n总面积：%.2f[剩余：%.2f]\n家具：%s"% (self.house_type, self.area,self.free_area, self.item_list))
+    def add_item(self, item):
+        print("要添加 %s" % item)
+        self.item_list.append(item.name)
+        self.free_area -= item.area
+    def __secret(self):
+        # 在对象的方法内部，是可以访问对象的私有属性的
+        return("%s 的类型是 %d" % (self.house_type, self.__age))
+bed = HouseItem("席梦思", 40)
+my_home = House("两室一厅", 60)
+my_home.add_item(bed)
+# 私有属性，在外界不能够被直接访问   print(my_home.__age)
+sec = my_home._House__secret()
+sec2 = my_home._House__age
+print('*****-----------***')
+print(sec,sec2)
+# 私有方法，同样不允许在外界直接访问 print(my_home.__secret())
